@@ -40,7 +40,7 @@ export class DeliveryAddressPage {
     await this.addressInput.fill(address.address);
     await this.cityInput.fill(address.city);
     await this.postalCodeInput.fill(address.postalCode);
-    await this.countrySelect.selectOption({ label: address.country });
+    await this.countrySelect.selectOption({ value: '8' });
     await this.phoneInput.fill(address.phone);
     await this.saveButton.click();
   }

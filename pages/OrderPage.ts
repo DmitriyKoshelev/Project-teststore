@@ -1,9 +1,6 @@
 import {Page, Locator, expect} from '@playwright/test';
 
 export class OrderPage {
-  verifyPaymentAndTermsChecked() {
-    throw new Error('Method not implemented.');
-  }
     private page: Page;
 
     private deliveryContinueButton: Locator;
@@ -26,29 +23,4 @@ export class OrderPage {
 
     }
 
-    //pass delivery
-    async confirmDelivery() {
-        await this.deliveryContinueButton.click();
-    }
-
-    //payment method
-    async chosePaymentMethod() {
-    await this.paymentOptionBank.click();
-  }
-
-    //Confirmation
-    async acceptTermsConditions() {
-        await this.termsCheckbox.check();
-    }
-
-    //Order confirm
-    async placeOrder() {
-    await this.placeOrderButton.click();
-  }
-
-  //Checking order is complete
-  async verifyOrderConfirmed() {
-    await expect(this.paymentOptionBank).toBeChecked();
-    await expect(this.termsCheckbox).toBeChecked();
-  }
 };
