@@ -1,13 +1,10 @@
 import { test, expect, Page } from '@playwright/test';
-import { RegistrationPage } from '../pages/registerPage'; 
+import { RegistrationPage } from '../../My-Project/pages/registerPage'; 
 import { faker, fi } from "@faker-js/faker";
 
 
 test('ur-01User Registration Page',{tag:"@reguser"}, async ({ page }) => {
     test.slow();
-    const registerPage = new RegistrationPage(page);
-
-
     const userRegistrationData = {
         firstname: "" + faker.person.firstName(),
         lastname: "" + faker.person.lastName(),
@@ -16,6 +13,13 @@ test('ur-01User Registration Page',{tag:"@reguser"}, async ({ page }) => {
         password: faker.internet.password()
     };
 
+    const registerPage = new RegistrationPage(
+        page,
+        userRegistrationData.firstname,
+        userRegistrationData.email,
+        userRegistrationData.password
+    );
+
     await page.goto("https://teststore.automationtesting.co.uk/index.php");
 
     await registerPage.registerUser(
@@ -23,6 +27,5 @@ test('ur-01User Registration Page',{tag:"@reguser"}, async ({ page }) => {
         userRegistrationData.lastname,
         userRegistrationData.email,
         userRegistrationData.password
-    );
-    
+    ); 
 });

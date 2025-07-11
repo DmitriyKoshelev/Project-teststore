@@ -14,4 +14,5 @@ test('ulog-01 test login with registered user', {tag: "@uslogin"}, async ({page}
 
     //Verifying successful login
     await expect(page.locator('//*[@id="_desktop_user_info"]')).toContainText(`${userData.firstname} ${userData.lastname}`);
+    console.log(`login user for: ${userData.firstname}, ${userData.lastname}`);
 });
